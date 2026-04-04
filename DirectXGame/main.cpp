@@ -1,11 +1,16 @@
 #include <Windows.h>
 #include "KamataEngine.h"
 
+using namespace KamataEngine;
+
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 	
 	// エンジンの初期化
-	KamataEngine::Initialize();
+	KamataEngine::Initialize(L"LE3*_99_カマタ_タロウ_CG4");
+
+	// DirectXCommonインスタンスの取得
+	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
 
 	// メインループ
 	while (true) {
@@ -13,6 +18,14 @@ int WINAPI WinMain(_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int) {
 		if (KamataEngine::Update()) {
 			break;
 		}
+
+		// 描画開始
+		dxCommon->PreDraw();
+
+		//ここに描画処理を記述する
+
+		// 描画終了
+		dxCommon->PostDraw();
 	}
 
 	// エンジンの終了処理
