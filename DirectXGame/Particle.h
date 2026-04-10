@@ -12,13 +12,13 @@ public:
 	~Particle();
 
 	/// 初期化
-	void Initialize();
+	void Initialize(Model* model);
 
 	/// 更新
 	void Update();
 
 	/// 描画
-	void Draw();
+	void Draw(Camera& camera);
 
  private:
 	// ワールド変換データ
