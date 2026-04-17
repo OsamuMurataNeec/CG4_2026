@@ -1,50 +1,44 @@
 #pragma once
 
 #include "KamataEngine.h"
-#include "Particle.h"
+#include "Stage.h"
+#include "Player.h"
+#include "GraphBar.h"
+#include "DrawNumber.h"
 
 // ゲームシーン
 class GameScene
 {
 public:
-
-	/// <summary>
-	/// デストラクタ
-	/// </summary>
+	// デストラクタ
 	~GameScene();
 
-	/// <summary>
-	/// 初期化
-	/// </summary>
+	// 初期化
 	void Initialize();
 
-	/// <summary>
-	/// 更新
-	/// </summary>
+	// 更新
 	void Update();
 
-	/// <summary>
-	/// 描画
-	/// </summary>
+	// 描画
 	void Draw();
 
 private:
-	// パーティクル3Dモデルデータ
-	KamataEngine::Model* modelParticle_ = nullptr;
-
+	// テクスチャハンドル
+	uint32_t textureHandleStage_ = 0;
+	uint32_t textureHandleGraph_ = 0;
+	uint32_t textureHandleNumber_ = 0;
+	// 3Dモデル
+	KamataEngine::Model* modelPlayer_ = nullptr;
 	// カメラ
 	KamataEngine::Camera camera_;
-
-	// パーティクル
-	Particle* particle_ = nullptr;
-	std::list<Particle*> particles_;
-
-	/// <summary>
-/// パーティクル発生
-/// </summary>
-/// <param name="position">位置</param>
-	void ParticleBorn(Vector3 position);
-
-
+	// クラス
+	Stage* stage_ = nullptr;
+	Player* player_ = nullptr;
+	GraphBar* graphBar_ = nullptr;
+	DrawNumber* drawNumber_ = nullptr;
+	// HP
+	int hp_ = 200;
+	// score
+	int gameScore_ = 0;
 };
 
